@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TSEIW – They speak Enlish in what?!</title>
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="lib/moment-with-locales.min.js"></script>
+	</head>
+	<body>
+		<div id="sidebar">
+			<h2>Movies</h2>
+			<ul id="movies">
+			</ul>
+			<h2>Cities</h2>
+			<ul id="cities">
+			</ul>
+			<div id="kudos">
+				<span class="big">PhiBoGraphy</span>
+				<span class="small">presents a</span>
+				<span class="big"><a href="https://twitter.com/phibo23" target="_blank">@PhiBo23</a></span>
+				<span class="small">project</span>
+				<span class="big">They Speak English In What?!</span>
+				<span class="small">frontend powered by</span>
+				<span class="big"><a href="http://jquery.com/" target="_blank">jQuery</a></span>
+				<span class="small">backend powered by</span>
+				<span class="big"><a href="http://scrapy.org/" target="_blank">Scrapy</a></span>
+				<span class="small">additional gear</span>
+				<span class="big"><a href="http://momentjs.com/" target="_blank">Moment.js</a></span>
+				<span class="small">, </span>
+				<span class="big"><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a></span>
+				<span class="small">project name inspired by</span>
+				<span class="big">Jules Winnfield</span>
+			</div>
+		</div>
+		<div id="content">
+			<h1>"What" ain't no Cinema I ever heard of... They speak English in "What"?!</h1>
+			<h2>Screenings</h2>
+			<div id="screenings">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function onlyUnique(value, index, self) { 
+ 		   return self.indexOf(value) === index;
+		}
+
+		$.ajax('data/test.json')
+			.done(function(data){
+				data.sort(function(a,b){
+					if (a.datetime < b.datetime)
+						return -1;
+					if (a.datetime > b.datetime)
+						return 1;
+					return 0;
+				});
+				//create sidebar
+				var movies = $.map(data,function(item, index){
+					return item.movie.titleRaw;
+				}).filter(onlyUnique).sort();
+				movies.forEach(function(m){
+					$('ul#movies').append($('<li/>',{text: m}));
+				});
+				var cities = $.map(data,function(item, index){
+					return item.cinema.city;
+				}).filter(onlyUnique).sort();
+				cities.forEach(function(c){
+					$('ul#cities').append($('<li/>',{text: c}));
+				});
+				//write data
+				var tmpday;
+				data.forEach(function(item){
+					itemdate = moment(item.datetime);
+					if(tmpday != itemdate.day()){
+						$('div#screenings').append($('<h3/>', {text: itemdate.format('D. MMM YYYY')}));
+						$('div#screenings').append($('<ul class="scale clearfix"><li>0:00</li><li>&nbsp;</li><li>&nbsp;</li><li>3:00</li><li>&nbsp;</li><li>&nbsp;</li><li>6:00</li><li>&nbsp;</li><li>&nbsp;</li><li>9:00</li><li>&nbsp;</li><li>&nbsp;</li><li>12:00</li><li>&nbsp;</li><li>&nbsp;</li><li>15:00</li><li>&nbsp;</li><li>&nbsp;</li><li>18:00</li><li>&nbsp;</li><li>&nbsp;</li><li>21:00</li><li>&nbsp;</li><li>&nbsp;</li></ul>'));
+						$('div#screenings').append($('<ul/>', {class: 'screenings'}));
+					}
+					$('ul.screenings:last-child()')
+						.append($('<li/>')
+							.append($('<div/>', {class: 'metadata', text: itemdate.format('H:mm') + ": " + item.movie.titleRaw + " "})
+								.append($('<a/>', {target: '_blank', href: item.link})
+									.append($('<span/>', {text: item.cinema.name}))
+								)
+							)
+							.append($('<div/>', {class: 'timeduration ' + (item.movie.duration?'defined':'undefined')})
+								.css({
+									left: (itemdate.hours()*60+itemdate.minutes())/1440*100 + "%",
+									width: 120/1440*100 + "%"
+								})
+							)
+						);
+				});
+			});
+	</script>
+</html>

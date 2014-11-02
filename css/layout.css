@@ -1,0 +1,100 @@
+body {
+	font-family: 'Oswald', sans-serif;
+}
+
+div#sidebar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 300px;
+}
+
+div#sidebar h2 {
+	text-align: center;
+}
+
+div#sidebar > ul {
+	list-style: none;
+	padding-left: 10px;	
+	padding-right: 10px;	
+}
+
+div#kudos {
+	margin-top: 50px;
+	padding-left: 20px;	
+	padding-right: 20px;	
+	font-weight: 100;
+	font-variant: small-caps;
+	text-align: center;
+	color: #666;
+}
+
+div#kudos a {
+	text-decoration: none;
+	color: #666;
+}
+
+div#kudos span.big {
+	font-size: 0.9em;
+}
+
+div#kudos span.small {
+	font-size: 0.7em;
+}
+
+div#content {
+	position: absolute;
+	top: 0;
+	left: 300px;
+	right: 0px;
+}
+
+div#screenings > h3,
+div#screenings > ul {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+ul.scale > li {
+	float: left;
+	display: block;
+	width: 4.1666666666667%;
+	text-align: center;
+	font-size: 0.6em;
+}
+
+ul.scale > li:nth-child(2n) {
+	background-color: #ccc;
+} 
+
+ul.screenings,
+ul.scale {
+	padding-left: 0px;
+	list-style: none;
+	width: 90%;
+}
+
+ul.screenings > li {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+ul.screenings > li > div.metadata {
+	padding: 2px;
+}
+
+ul.screenings > li > div.timeduration {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(255,0,0,0.5);
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}

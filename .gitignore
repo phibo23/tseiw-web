@@ -1,0 +1,4 @@
+.DS_Store
+
+# don't commit library code
+lib/*.js

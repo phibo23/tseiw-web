@@ -3,45 +3,53 @@
 		<meta charset="utf-8">
 		<title>TSEIW – They speak English in what?!</title>
 		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
-		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<link href="lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src="lib/moment-with-locales.min.js"></script>
+		<script src="lib/jquery-ui/jquery-ui.min.js"></script>
 		<script src="js/util.js"></script>
 		<script src="js/tseiw.js"></script>
 	</head>
 	<body>
-		<div id="sidebar">
-			<h2>Movies</h2>
-			<ul id="movies">
-			</ul>
-			<h2>Cities</h2>
-			<ul id="cities">
-			</ul>
-			<div id="kudos">
-				<span class="big">PhiBoGraphy</span>
-				<span class="small">presents a</span>
-				<span class="big"><a href="https://twitter.com/phibo23" target="_blank">@PhiBo23</a></span>
-				<span class="small">project</span>
-				<span class="big">They Speak English In What?!</span>
-				<span class="small">frontend powered by</span>
-				<span class="big"><a href="http://jquery.com/" target="_blank">jQuery</a></span>
-				<span class="small">backend powered by</span>
-				<span class="big"><a href="http://scrapy.org/" target="_blank">Scrapy</a></span>
-				<span class="small">additional gear</span>
-				<span class="big"><a href="http://momentjs.com/" target="_blank">Moment.js</a></span>
-				<span class="small">, </span>
-				<span class="big"><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a></span>
-				<span class="small">project name inspired by</span>
-				<span class="big">Jules Winnfield</span>
-			</div>
+		<h1>"What" ain't no Cinema I ever heard of... They speak English in "What"?!</h1>
+		<div id="meta">
+			<form id="search">
+				<label for="movie">Get show times for</label>
+				<input type="text" name="movie" placeholder="ALL the movies"/>
+				<label for="city">in</label>
+				<input type="text" name="city" placeholder="anywhere"/>
+				<input type="submit" value="&#xf002;"/>
+			</form>
 		</div>
 		<div id="content">
-			<h1>"What" ain't no Cinema I ever heard of... They speak English in "What"?!</h1>
-			<h2>Screenings</h2>
+			<div class="loading-spinner">
+				<span class="fa fa-circle-o-notch fa-spin fa-2x"></span>
+			</div>
 			<div id="screenings">
 			</div>
+		</div>
+		<div id="kudos">
+			<span class="big">PhiBoGraphy</span>
+			<span class="small">presents a</span>
+			<span class="big"><a href="https://twitter.com/phibo23" target="_blank">@PhiBo23</a></span>
+			<span class="small">project</span>
+			<span class="big">They Speak English In What?!</span>
+			<span class="small">frontend powered by</span>
+			<span class="big"><a href="http://jquery.com/" target="_blank">jQuery</a></span>
+			<span class="small">and</span>
+			<span class="big"><a href="http://jqueryui.com/" target="_blank">jQuery UI</a></span>
+			<span class="small">backend powered by</span>
+			<span class="big"><a href="http://scrapy.org/" target="_blank">Scrapy</a></span>
+			<span class="small">additional gear</span>
+			<span class="big"><a href="http://momentjs.com/" target="_blank">Moment.js</a></span>
+			<span class="small">, </span>
+			<span class="big"><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a></span>
+			<span class="small">project name inspired by</span>
+			<span class="big">Jules Winnfield</span>
 		</div>
 	</body>
 	<script type="text/javascript">

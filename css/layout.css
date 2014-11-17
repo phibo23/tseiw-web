@@ -1,56 +1,65 @@
 body {
 	font-family: 'Oswald', sans-serif;
+	width: 90%;
+	margin: 0 auto;
 }
 
-div#sidebar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 300px;
-}
-
-div#sidebar h2 {
+#meta {
 	text-align: center;
 }
 
-div#sidebar > ul {
-	list-style: none;
-	padding-left: 10px;	
-	padding-right: 10px;	
+#search {
+	font-size: 20px;
 }
 
-div#kudos {
-	margin-top: 50px;
-	padding-left: 20px;	
-	padding-right: 20px;	
-	font-weight: 100;
-	font-variant: small-caps;
-	text-align: center;
-	color: #666;
+#search input[name="movie"],
+#search input[name="city"] {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	width: 40%;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
 }
 
-div#kudos a {
+#search input[type="submit"] {
+	font-family: 'FontAwesome';
+	font-size: 20px;
+	background-color: transparent;
+	border: 0px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+#meta .module {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#meta .module .count {
+	font-size: 32px;
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+#content a {
+	color: #aa0000;
 	text-decoration: none;
-	color: #666;
 }
 
-div#kudos span.big {
-	font-size: 0.9em;
+#content .loading-spinner {
+	display: none;
+	margin: 20px;
+	text-align: center;
 }
 
-div#kudos span.small {
-	font-size: 0.7em;
+#content.loading .loading-spinner {
+	display: block;
 }
 
-div#content {
-	position: absolute;
-	top: 0;
-	left: 300px;
-	right: 0px;
-}
-
-div#screenings > h3,
-div#screenings > ul {
+#screenings > h3,
+#screenings > ul {
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
@@ -71,7 +80,6 @@ ul.screenings,
 ul.scale {
 	padding-left: 0px;
 	list-style: none;
-	width: 90%;
 }
 
 ul.screenings > li {
@@ -83,12 +91,74 @@ ul.screenings > li > div.metadata {
 	padding: 2px;
 }
 
+ul.screenings > li > div.metadata .big {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+ul.screenings > li > div.metadata .small {
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+ul.screenings > li > div.metadata .time {
+	display: inline-block;
+	border: 2px solid #aa0000;
+	border-radius: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	background-color: #aa0000;
+	color: #fff;
+	vertical-align: baseline;
+}
+
+ul.screenings > li > div.metadata .feature {
+	display: inline-block;
+	border: 2px solid #aa0000;
+	border-radius: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	color: #aa0000;
+	vertical-align: baseline;
+}
+
+
 ul.screenings > li > div.timeduration {
 	position: absolute;
 	z-index: 10;
 	top: 0;
 	bottom: 0;
 	background-color: rgba(255,0,0,0.5);
+}
+
+div#kudos {
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;	
+	padding-right: 20px;	
+	font-weight: 100;
+	font-variant: small-caps;
+	text-align: center;
+	color: #666;
+	width: 50%;
+}
+
+div#kudos a {
+	text-decoration: none;
+	color: #666;
+}
+
+div#kudos span.big {
+	font-size: 0.9em;
+}
+
+div#kudos span.small {
+	font-size: 0.7em;
 }
 
 .clearfix:after {

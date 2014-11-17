@@ -2,3 +2,4 @@
 
 # don't commit library code
 lib/*.js
+lib/jquery-ui/*

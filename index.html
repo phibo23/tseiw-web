@@ -1,13 +1,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>TSEIW – They speak Enlish in what?!</title>
+		<title>TSEIW – They speak English in what?!</title>
 		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src="lib/moment-with-locales.min.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/tseiw.js"></script>
 	</head>
 	<body>
 		<div id="sidebar">
@@ -43,56 +45,6 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		function onlyUnique(value, index, self) { 
- 		   return self.indexOf(value) === index;
-		}
-
-		$.ajax('data/test.json')
-			.done(function(data){
-				data.sort(function(a,b){
-					if (a.datetime < b.datetime)
-						return -1;
-					if (a.datetime > b.datetime)
-						return 1;
-					return 0;
-				});
-				//create sidebar
-				var movies = $.map(data,function(item, index){
-					return item.movie.titleRaw;
-				}).filter(onlyUnique).sort();
-				movies.forEach(function(m){
-					$('ul#movies').append($('<li/>',{text: m}));
-				});
-				var cities = $.map(data,function(item, index){
-					return item.cinema.city;
-				}).filter(onlyUnique).sort();
-				cities.forEach(function(c){
-					$('ul#cities').append($('<li/>',{text: c}));
-				});
-				//write data
-				var tmpday;
-				data.forEach(function(item){
-					itemdate = moment(item.datetime);
-					if(tmpday != itemdate.day()){
-						$('div#screenings').append($('<h3/>', {text: itemdate.format('D. MMM YYYY')}));
-						$('div#screenings').append($('<ul class="scale clearfix"><li>0:00</li><li>&nbsp;</li><li>&nbsp;</li><li>3:00</li><li>&nbsp;</li><li>&nbsp;</li><li>6:00</li><li>&nbsp;</li><li>&nbsp;</li><li>9:00</li><li>&nbsp;</li><li>&nbsp;</li><li>12:00</li><li>&nbsp;</li><li>&nbsp;</li><li>15:00</li><li>&nbsp;</li><li>&nbsp;</li><li>18:00</li><li>&nbsp;</li><li>&nbsp;</li><li>21:00</li><li>&nbsp;</li><li>&nbsp;</li></ul>'));
-						$('div#screenings').append($('<ul/>', {class: 'screenings'}));
-					}
-					$('ul.screenings:last-child()')
-						.append($('<li/>')
-							.append($('<div/>', {class: 'metadata', text: itemdate.format('H:mm') + ": " + item.movie.titleRaw + " "})
-								.append($('<a/>', {target: '_blank', href: item.link})
-									.append($('<span/>', {text: item.cinema.name}))
-								)
-							)
-							.append($('<div/>', {class: 'timeduration ' + (item.movie.duration?'defined':'undefined')})
-								.css({
-									left: (itemdate.hours()*60+itemdate.minutes())/1440*100 + "%",
-									width: 120/1440*100 + "%"
-								})
-							)
-						);
-				});
-			});
+		tseiw.init('data/test.json');
 	</script>
 </html>

@@ -131,8 +131,6 @@ var tseiw = {
 		});
 	},
 	applyFilters: function(movie, city) {
-		console.log(movie);
-		console.log(city);
 		tseiw.filteredData = tseiw.data.filter(function(value, index, self){
 			var matchMovie = false;
 			if (movie) {

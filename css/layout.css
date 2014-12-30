@@ -1,7 +1,10 @@
 body {
 	font-family: 'Oswald', sans-serif;
-	width: 90%;
-	margin: 0 auto;
+	margin: 0px;
+}
+
+#pagetitle {
+	text-align: center;
 }
 
 #meta {
@@ -41,6 +44,11 @@ body {
 	display: inline-block;
 	margin-right: 5px;
 	margin-left: 5px;
+}
+
+#content {
+	width: 90%;
+	margin: 0 auto;
 }
 
 #content a {
@@ -135,17 +143,19 @@ ul.screenings > li > div.timeduration {
 	background-color: rgba(255,0,0,0.5);
 }
 
+#footer {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
 div#kudos {
-	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 20px;	
-	padding-right: 20px;	
 	font-weight: 100;
 	font-variant: small-caps;
 	text-align: center;
-	color: #666;
 	width: 50%;
+	color: #424242;
 }
 
 div#kudos a {
